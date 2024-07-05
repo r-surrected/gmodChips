@@ -1,0 +1,205 @@
+@name egpNumber
+@inputs 
+@outputs 
+@persist 
+@trigger 
+@strict
+
+# use egpNumber(), not digitOne().
+
+function digitOne(Num:number,StartIndex:number,Pos:vector2,Color:vector,E:wirelink) {
+Num = floor(Num)
+local I = StartIndex
+if(Num < 10) {
+    if(Num == 0) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,30))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,30))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color) 
+    
+    E:egpBox(I+5,Pos+vec2(0,-30),vec2(10,30))
+    E:egpColor(I+5,Color) 
+    
+    E:egpBox(I+6,Pos+vec2(0,0),vec2(10,30))
+    E:egpColor(I+6,Color)         
+        
+    }
+    if(Num == 1) {
+    E:egpBox(I,Pos+vec2(10,-15),vec2(10,50))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-5,40),vec2(20,10))
+    E:egpColor(I+2,Color)
+    }
+    if(Num == 2) {
+    E:egpBox(I,Pos,vec2(10,25))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+2,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,25))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color) 
+    }
+    if(Num == 3) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,25))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+2,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,25))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color)    
+    }
+    if(Num == 4) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,40))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(0,-30),vec2(10,30))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+2,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,30))
+    E:egpColor(I+3,Color) 
+        
+    }
+    if(Num == 5) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,25))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+2,Color)
+    
+    E:egpBox(I+3,Pos-vec2(0,30),vec2(10,25))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color)         
+    }
+    if(Num == 6) {
+    E:egpBox(I,Pos,vec2(10,25))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+2,Color)
+    
+    E:egpBox(I+3,Pos-vec2(0,30),vec2(10,25))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-20,0),vec2(10,25))
+    E:egpColor(I+4,Color) 
+    
+    E:egpBox(I+5,Pos+vec2(10,-40),vec2(30,10))
+    E:egpColor(I+5,Color)        
+    }
+    if(Num == 7) {
+    E:egpBox(I,Pos+vec2(20,-10),vec2(10,60))
+    E:egpColor(I,Color)
+    
+    #E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    #E:egpColor(I+1,Color)
+    
+    E:egpBox(I+2,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+2,Color)        
+    }
+    if(Num == 8) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,30))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,30))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color) 
+    
+    E:egpBox(I+5,Pos+vec2(0,-30),vec2(10,30))
+    E:egpColor(I+5,Color) 
+    
+    E:egpBox(I+6,Pos+vec2(0,0),vec2(10,30))
+    E:egpColor(I+6,Color)
+    
+    E:egpBox(I+7,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+7,Color)             
+    }
+    if(Num == 9) {
+    E:egpBox(I,Pos+vec2(20,0),vec2(10,30))
+    E:egpColor(I,Color)
+    
+    E:egpBox(I+1,Pos+vec2(10,15),vec2(30,10))
+    E:egpColor(I+1,Color)
+    
+    E:egpBox(I+3,Pos-vec2(-20,30),vec2(10,30))
+    E:egpColor(I+3,Color) 
+
+    E:egpBox(I+4,Pos-vec2(-10,40),vec2(30,10))
+    E:egpColor(I+4,Color) 
+    
+    E:egpBox(I+5,Pos+vec2(0,-30),vec2(10,30))
+    E:egpColor(I+5,Color) 
+    
+    #E:egpBox(I+6,Pos+vec2(0,0),vec2(10,30))
+    #E:egpColor(I+6,Color)
+    
+    E:egpBox(I+7,Pos-vec2(-10,15),vec2(30,10))
+    E:egpColor(I+7,Color)        
+    }
+}     
+    
+}
+function egpNumber(Num:number,StartIndex:number,Pos:vector2,Color:vector,E:wirelink) {
+    for(I=StartIndex,StartIndex+200) {
+    E:egpRemove(I)    
+    }
+    Num = round(Num)
+    #digit finding
+    
+if(Num < 10) {
+    digitOne(Num,StartIndex,Pos,Color,E)    
+}
+if(Num < 100  & Num >= 10) {
+    local PosL = Pos - vec2(25,0)
+    local PosR = Pos + vec2(25,0)
+    digitOne((Num/10) % 10,StartIndex+50,PosL,Color,E)
+    digitOne(Num % 10,StartIndex,PosR,Color,E)
+}
+if(Num < 1000 & Num >= 100) {
+    local PosL = Pos - vec2(50,0)
+    local PosR = Pos + vec2(50,0)
+    digitOne((Num/100)%10,StartIndex+50,PosL,Color,E)
+    digitOne((Num/10)%10,StartIndex,Pos,Color,E)
+    digitOne(Num%10,StartIndex+150,PosR,Color,E)
+}
+} 
