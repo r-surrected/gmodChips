@@ -1,0 +1,6 @@
+@name Speedometer
+@inputs ENT:entity
+@outputs MPH KPH
+interval(100)
+MPH=round(toUnit("mph", ENT:vel():length()))
+KPH=round(toUnit("kph", ENT:vel():length()))
