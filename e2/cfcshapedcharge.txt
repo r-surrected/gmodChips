@@ -1,0 +1,23 @@
+@name shape
+@inputs 
+@outputs D:number
+@persist T:number
+@strict
+@model models/weapons/w_c4_planted.mdl
+
+# CFC shaped charge imitator, kind-of broken, you should probably undo it before it gets to 20 beeps
+
+if(first()){
+soundPlay(1,5,"npc/roller/blade_cut.wav")
+T = systime()
+lightCreate(1,entity():pos(),vec(255,0,0),1500,1)
+timer("beep",1000)
+}
+interval(100)
+D = systime() - T
+lightBrightness(1,abs(cos(D + _PI)))
+
+if(clk("beep")){
+    soundPlay(randint(100000),soundDuration("weapons/c4/c4_beep1.wav"),"weapons/c4/c4_beep1.wav")  
+    timer("beep",1000)
+}
