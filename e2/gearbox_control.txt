@@ -1,0 +1,42 @@
+@name Gearbox Control
+@inputs GearUp GearDown
+@outputs Ratio Gear
+@persist Ratios:array SetGear:number
+if(first()){
+    #made by oyerk, modified by r_surrected
+    Gear=0
+    Ratio=0
+    SetGear=0
+    Ratios=array(
+        1=0.1,
+        2=0.2,
+        3=0.3,
+        4=0.4,
+        5=0.45,
+        6=0.5,
+        7=0.55,
+        8=0.6,
+        9=0.65,
+        10=0.7,
+        11=0.71,
+        12=0.72,
+        -1=-0.1
+    )   
+}
+if(~GearUp & SetGear<12 & GearUp==1){
+    SetGear++
+}
+if(~GearDown & SetGear>-1 & GearDown==1){
+    SetGear--
+}
+if(SetGear>0){
+    Ratio=Ratios[SetGear,number]
+    Gear=1
+}elseif(SetGear==0){
+    Ratio=0
+    Gear=0
+}elseif(SetGear==-1){
+    Ratio=0
+    Gear=2
+}
+Ratio=Ratios[SetGear,number]

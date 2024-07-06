@@ -1,0 +1,84 @@
+@name Guilt Tripper
+@inputs 
+@outputs 
+@persist Index List:array OldIndex Message:string
+@trigger 
+@strict
+
+#Made by r_surrected, idea from hexodile from CFC
+if(first()) {
+List = array(
+    "You've taken away something precious from them.",
+    "Their joy has turned into sorrow.",
+    "You've caused disappointment and sadness.",
+    "You've created a void in their experience.",
+    "Their happiness has been replaced with despair.",
+    "You've cast a dark cloud over their day.",
+    "You've disrupted their sense of camaraderie.",
+    "You've turned their fun into frustration.",
+    "You've made them question their choices.",
+    "You've left a painful mark on their memories.",
+    "You've made their experience much less enjoyable.",
+    "You've stolen the sunshine from their day.",
+    "You've turned their excitement into regret.",
+    "You've brought a somber mood to their time.",
+    "You've taken away their sense of belonging.",
+    "You've left them feeling downcast.",
+    "You've turned their laughter into tears.",
+    "You've caused heartache in their community.",
+    "You've replaced their enthusiasm with disappointment.",
+    "You've given them a heavy heart.",
+    "Their once bright spirits now wane.",
+    "Your actions have left a mark of sorrow.",
+    "You've taken away a glimmer of hope.",
+    "Their smiles have been replaced with sighs.",
+    "You've dashed their dreams and aspirations.",
+    "Your choices have clouded their outlook.",
+    "You've replaced their laughter with silence.",
+    "Your deeds have led to regret and remorse.",
+    "Their optimism has been replaced by pessimism.",
+    "You've turned their happiness into despair.",
+    "You've left a trail of disappointment.",
+    "Your actions have dimmed their light.",
+    "Their joy has been replaced by sorrowful reflection.",
+    "You've extinguished the spark in their eyes.",
+    "You've taken away their sense of wonder.",
+    "You've traded their laughter for tears.",
+    "Your choices have left them in a state of melancholy.",
+    "You've left them in a sea of regret.",
+    "Your deeds have caused a heavy heart.",
+    "You've shattered their sense of security.",
+    "Your actions have led to feelings of isolation.",
+    "You've torn apart the bonds they cherished.",
+    "Your choices have left a stain on their soul.",
+    "You've turned their world upside down.",
+    "Your deeds have brought a shadow over their life.",
+    "You've left them in a state of despair.",
+    "Your actions have sown seeds of doubt.",
+    "You've stolen their peace of mind.",
+    "Your choices have led to a loss of trust.",
+    "You've replaced their hope with disillusionment."
+)
+Index = 0
+}
+interval(1000)
+OldIndex = Index
+Index = randint(1,50)
+if(Index == OldIndex) {
+Index = randint(1,50)   
+}
+event playerDeath(Victim:entity, _:entity, Attacker:entity) {
+if(Attacker == owner()) {
+Message = List[round(random(1,50)),string]
+print(_HUD_PRINTCENTER,Message)
+}
+}
+
+
+
+
+
+
+
+
+

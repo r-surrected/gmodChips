@@ -1,0 +1,32 @@
+@name SW Hologram
+@inputs Entity:entity
+@outputs 
+@persist Scale:vector Angle:angle Pos:vector Model:string
+@trigger 
+@strict 
+@model models/maxofs2d/hover_plate.mdl
+if (first() | dupefinished() | ~Entity) {
+#scale, default is 0.2
+S = 0.2
+Scale = vec(S,S,S)
+Pos = entity():pos() + vec(0,0,10)
+holoCreate(1,Pos,Scale,Angle,vec(255),Model)
+#should there be hologram model? 1 = yes 0 = no
+Hologram = 1
+}
+if (Entity:isValid()) {
+Model = Entity:model()
+Angle = Entity:angles()
+interval(15)
+# holoCreate(Number Index, Vector Position, Vector Scale, Angle Ang, Vector Color, String Model)
+holoParent(1,entity())
+holoSkin(1,Entity:getSkin())
+holoPlayerColor(1,Entity:getPlayerColor())
+if (Entity:isPlayer()) {
+    holoAnim(1,"idle_all_01")
+}
+if (Hologram == 1) {
+  holoRenderFX(1,1)
+
+}
+}

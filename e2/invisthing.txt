@@ -1,0 +1,26 @@
+@name InvisThing
+@inputs 
+@outputs 
+@persist 
+@trigger 
+@strict
+
+if (first()) {
+#scale base is 75
+Scale = vec(125)
+setName("hehe")
+holoCreate(1,entity():pos())
+holoScaleUnits(1,Scale)
+holoParent(1,entity())
+holoMaterial(1,"models/effects/muzzleflash/blurmuzzle")
+holoModel(1,"models/sprops/geometry/sphere_18.mdl")
+}
+interval(300)
+findIncludePlayerProps(owner())
+findInSphere(entity():pos(),Scale:x()*10)
+local Arr = findToArray()
+foreach (_:number,Ent:entity = Arr) {
+if(Ent & !Ent:isPlayer()){
+Ent:propShadow(0)
+}
+}

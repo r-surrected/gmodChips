@@ -1,0 +1,9 @@
+@name ModelNamer
+@inputs 
+@outputs 
+@persist 
+@trigger 
+@strict
+
+print(entity():isWeldedTo():model() + " | " + entity():isWeldedTo():name())
+
