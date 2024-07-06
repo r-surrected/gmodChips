@@ -1,0 +1,32 @@
+@name filter
+@inputs A:string 
+@outputs 
+@persist 
+@strict
+BlockedStrings = array("kys")
+# probably ops heavy
+function string string:filter() {
+    local Characters = array()
+    local S = ""
+    foreach(_:number,Str:string = This:explode("")){
+       Characters:pushNumber(Str:isLower())
+    }
+    This = This:lower()
+    foreach(_:number,Str:string = BlockedStrings){
+    This = This:replace(Str,"|")
+    }
+    foreach(_:number,Str:string = BlockedStrings){
+    This:reverse()
+    This = This:replace(Str,"|")
+    }
+    foreach(K:number,N:number = Characters){
+    if(N){
+    S = S + This[K]
+    }
+    else{
+    S = S + This[K]:upper()
+    }
+    }
+    return S
+}
+print(A:filter())

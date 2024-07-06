@@ -1,0 +1,3 @@
+function vector vlerp(Pos1:vector,Pos2:vector,Fraction:number) {
+    return vec(lerp(Pos1:x(),Pos2:x(),Fraction),lerp(Pos1:y(),Pos2:y(),Fraction),lerp(Pos1:z(),Pos2:z(),Fraction))
+}

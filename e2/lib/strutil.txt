@@ -1,0 +1,58 @@
+
+function string string:sindex(N:number) {
+    
+    return This:explode("")[N,string]
+
+}
+function string string:stringwash() {
+    
+    local S = ""   
+    
+    for (I = 1, This:length()) {
+        local CurChar = This:sindex(I)
+        if(toByte(CurChar) > 126 | toByte(CurChar) == 47) {
+            CurChar = ""
+        }
+        elseif(toByte(CurChar) <= 32) { 
+            CurChar = "-"    
+        }
+        else {
+        S = S + toChar(toByte(CurChar))
+        }
+    }
+    
+    return S
+}
+
+function string string:cstringwash(CUSTOM:string) {
+    
+    local S = ""   
+    
+    for (I = 1, This:length()) {
+        local CurChar = This:sindex(I)
+        if(toByte(CurChar) > 126 | toByte(CurChar) == 47) {
+            CurChar = CUSTOM
+        }
+        elseif(toByte(CurChar) <= 32) { 
+            CurChar = "-"    
+        }
+        else {
+        S = S + toChar(toByte(CurChar))
+        }
+    }
+    
+    return S
+}
+function string string:csvwash() {
+ 
+    local S = ""
+    foreach(_:number, C:string = This:explode("")){
+    local B = toByte(C)
+    if(B == 44){
+    C = "[*]"   
+    }
+    
+    S = S + C    
+    }
+    return S
+}
