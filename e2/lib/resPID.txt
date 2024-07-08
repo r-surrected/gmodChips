@@ -1,0 +1,31 @@
+@name resPID
+@persist [LastTime PrevError Integral]:array
+@strict
+#[
+    made by r_surrected
+    this used to be super cursed, i wasnt thinking smart and got mad at e2 and decided to just make 8 individual pid functions 
+    that had their own persist variables which was like 400 lines of code or something
+    realized i can just use array magic >:), now infinite pid functions >:)
+]]#
+if(first()){
+
+    
+LastTime = array()   
+PrevError = array()
+Integral = array()
+
+}
+function number pid(ID:number, PV:number, SP:number, P:number,I:number,D:number){     
+        # time stuff
+        local TimeDiff = curtime() - ( LastTime[ID,number] | curtime() ) 
+        # pid stuff now
+        # p
+        local Error = SP - PV
+        # i
+        Integral[ID,number] = Integral[ID,number] + Error * TimeDiff
+        # d
+        local Derivative = (Error - PrevError[ID,number]) / TimeDiff
+        PrevError[ID,number] = Error
+        LastTime[ID,number] = curtime()
+    return ( P * Error ) + ( I * Integral[ID,number] ) + ( D * Derivative )
+}
