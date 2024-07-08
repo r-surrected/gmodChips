@@ -12,7 +12,7 @@ LastTime = array()
 PrevError = array()
 Integral = array()
 }
-function number pid(ID:number, PV:number, SP:number, P:number,I:number,D:number){     
+function number pid(ID:number, Active:number, PV:number, SP:number, P:number,I:number,D:number){     
         # time stuff
         local TimeDiff = curtime() - ( LastTime[ID,number] | curtime() ) 
         # pid stuff now
@@ -24,5 +24,5 @@ function number pid(ID:number, PV:number, SP:number, P:number,I:number,D:number)
         local Derivative = (Error - PrevError[ID,number]) / TimeDiff
         PrevError[ID,number] = Error
         LastTime[ID,number] = curtime()
-    return ( P * Error ) + ( I * Integral[ID,number] ) + ( D * Derivative )
+    return ( ( P * Error ) + ( I * Integral[ID,number] ) + ( D * Derivative ) ) * Active
 }
