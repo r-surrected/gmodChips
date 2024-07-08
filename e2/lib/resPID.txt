@@ -8,12 +8,9 @@
     realized i can just use array magic >:), now infinite pid functions >:)
 ]]#
 if(first()){
-
-    
 LastTime = array()   
 PrevError = array()
 Integral = array()
-
 }
 function number pid(ID:number, PV:number, SP:number, P:number,I:number,D:number){     
         # time stuff
