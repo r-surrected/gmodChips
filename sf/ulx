@@ -1,0 +1,29 @@
+--@name ulx yay
+--@author r_surrected
+--@shared
+
+
+-- you can add commands that you dont want hidden from other chips in here
+bypass = {"!bind","!unbind","!bindsafe","!fakeban","/supercurse","/schizocurse","/curse"}
+
+hook.add("Playersay","hi guy",function(ply, msg)  
+    if ply ~= owner() then end
+    -- bypasses the bypass strings
+    for i,v in pairs(bypass) do
+        if msg:split(" ")[1] == v then
+            return
+        end
+    end
+    -- deletes messages that start with !
+    if msg:left(1) == "!" then 
+        return ""
+    end
+    -- same but /
+    elseif msg:left(1) == "/" then 
+        return ""
+    end
+    -- if you're trying to talk in asay but you accidentally put a @ then it hides it
+    if msg:left(2) == " @" then
+        return ""
+    end
+end)
