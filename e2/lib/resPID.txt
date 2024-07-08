@@ -11,6 +11,10 @@ if(first()){
 LastTime = array()   
 PrevError = array()
 Integral = array()
+
+# CONFIG
+# makes integral / 1000 so that it makes lil softer
+SoftIntegral = 1
 }
 function number pid(ID:number, Active:number, PV:number, SP:number, P:number,I:number,D:number){     
         # time stuff
@@ -20,6 +24,7 @@ function number pid(ID:number, Active:number, PV:number, SP:number, P:number,I:n
         local Error = SP - PV
         # i
         Integral[ID,number] = Integral[ID,number] + Error * TimeDiff
+        if(SoftIntegral){Integral[ID,number] = Integral[ID,number]/1000}
         # d
         local Derivative = (Error - PrevError[ID,number]) / TimeDiff
         PrevError[ID,number] = Error
