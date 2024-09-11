@@ -10,7 +10,6 @@ local Size = 500
 
 --initialize
 
---tables
 local inHolos = {}
 local outHolos = {}
 
@@ -45,17 +44,18 @@ innerHolo(Vector(0, 0, 0), Angle(), "models/hunter/misc/sphere2x2.mdl", Vector(-
 outerHolo(Vector(0, 0, 0), Angle(), "models/hunter/misc/sphere2x2.mdl", Vector(10), Color(255,255,255), "models/props_lab/cornerunit_cloud")
 
 
-hook.add("think", "the thinker", function()
+timer.create("staggeredThink", 0.1, 0, function()
+    -- optimization: uses a timer instead of think hook, uses distance squared and size squared. 
     -- decides whether people can see the holos or not
     for _, v in ipairs(inHolos) do
-        if v:getPos():getDistance(render.getOrigin()) < Size then
+        if v:getPos():getDistanceSqr(render.getOrigin()) < Size^2 then
             v:setNoDraw(false) 
         else
             v:setNoDraw(true) 
         end
     end
     for _, v in ipairs(outHolos) do
-        if v:getPos():getDistance(render.getOrigin()) > Size then
+        if v:getPos():getDistanceSqr(render.getOrigin()) > Size^2 then
             v:setNoDraw(false) 
         else
             v:setNoDraw(true) 
