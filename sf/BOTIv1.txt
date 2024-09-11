@@ -1,0 +1,64 @@
+--@name BOTI
+--@author r_surrected
+--@client
+
+-- BOTI (Bigger On The Inside) V1 -- r_surrected -- 9/11/24
+-- ungatekept, unstoppable. there is no pocket dimension monopoly.
+-- dm r_surrected on discord if you have problems or suggestions
+--config
+local Size = 500
+
+--initialize
+
+--tables
+local inHolos = {}
+local outHolos = {}
+
+-- functions to organize holos
+local function innerHolo(pos, ang, model, scale, color, mat)
+    pos = chip():localToWorld(pos)
+    local holo = hologram.create(pos, ang, model, scale)
+    holo:setParent(chip())
+    holo:setColor(color)
+    holo:setMaterial(mat)
+    table.insert(inHolos, holo)
+    return holo
+end
+
+local function outerHolo(pos, ang, model, scale, color, mat)
+    pos = chip():localToWorld(pos)
+    local holo = hologram.create(pos, ang, model, scale)
+    holo:setParent(chip())
+    holo:setColor(color)
+    holo:setMaterial(mat)
+    table.insert(outHolos, holo)
+    return holo
+end
+
+-- PLACE FUNCTIONS HERE --
+-- position, angle, model, scale, color, material
+-- position is automatically local to chip
+
+-- very simple example 
+innerHolo(Vector(0, 0, 0), Angle(), "models/hunter/misc/sphere2x2.mdl", Vector(-50), Color(255,255,255), "overlays/shorewave002a")
+--
+outerHolo(Vector(0, 0, 0), Angle(), "models/hunter/misc/sphere2x2.mdl", Vector(10), Color(255,255,255), "models/props_lab/cornerunit_cloud")
+
+
+hook.add("think", "the thinker", function()
+    -- decides whether people can see the holos or not
+    for _, v in ipairs(inHolos) do
+        if v:getPos():getDistance(render.getOrigin()) < Size then
+            v:setNoDraw(false) 
+        else
+            v:setNoDraw(true) 
+        end
+    end
+    for _, v in ipairs(outHolos) do
+        if v:getPos():getDistance(render.getOrigin()) > Size then
+            v:setNoDraw(false) 
+        else
+            v:setNoDraw(true) 
+        end
+    end
+end)
